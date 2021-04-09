@@ -81,11 +81,11 @@ const makeHobbits = () => {
     // hint: use the given 'hobbits' array and use a for loop
   for (hobbit of hobbits) {
     const $li = $('<li>').text(hobbit)
-    
+    $li.addClass('hobbit')
     $ul.append($li)
   }
   // 3. also, give each hobbit (`li`) a class of "hobbit"
-  $('li').addClass('hobbit')
+
   // 4. append the ul to the shire
     // hint: get 'The-Shire' by using its id
   $('#The-Shire').append($ul)
@@ -139,13 +139,19 @@ const makeBaddies = () => {
 const makeBuddies = () => {
 
   // 1. create an aside tag and append it to middle-earth below mordor
-
+  $aside = $('<aside>')
+  $('section').append($aside)
   // 2. display an unordered list of buddies in the aside
-
+  $ul = $('<ul>')
+  for (buddy of buddies){
+    $li = $('<li>').text(buddy)
+    $li.addClass('buddy')
+    $ul.append($li)
+  }
   // 3. give each of the buddies a class of "buddy"
-
+  
   // 4. don't forget to append them to the aside
-
+  $('aside').append($ul)
 };
 
 // COMMIT YOUR WORK
