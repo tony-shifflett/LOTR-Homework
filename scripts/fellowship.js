@@ -250,8 +250,16 @@ const hornOfGondor = () => {
 const itsDangerousToGoAlone = () => {
 
   // 1. take Frodo and Sam out of the fellowship and move them to Mordor (they don't need to be inside a ul in Mordor)
+  const $Frodo = $("li:contains('Frodo')").detach()
+  const $Sam = $("li:contains('Samwise')").detach()
+  $('#Mordor').append($Frodo)
+  $('#Mordor').append($Sam)
 
   // 2. add a div with an id of 'mount-doom' to Mordor
+  $div = $('<div>').attr('id', 'mount-doom')
+  //display + prepend part of experiment to stop mordor from moving off map
+  $div.css('display', 'none')
+  $('#Mordor').prepend($div)
 
 };
 
@@ -264,9 +272,11 @@ const itsDangerousToGoAlone = () => {
 const weWantsIt = () => {
 
   // 1. Create a div with an id of 'gollum' and add it to Mordor
+  const $div = $('<div>').attr('id', "gollum")
+  $('#Mordor').append($div)
 
   // 2. Move the ring from Frodo and give it to Gollum
-
+  $
   // 3. Move Gollum into Mount Doom
 
 };
