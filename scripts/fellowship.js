@@ -81,6 +81,7 @@ const makeHobbits = () => {
     // hint: use the given 'hobbits' array and use a for loop
   for (hobbit of hobbits) {
     const $li = $('<li>').text(hobbit)
+    
     $ul.append($li)
   }
   // 3. also, give each hobbit (`li`) a class of "hobbit"
@@ -118,11 +119,15 @@ const keepItSecretKeepItSafe = () => {
 const makeBaddies = () => {
 
   // 1. display an unordered list of baddies in Mordor
-
+  $ul = $('<ul>')
   // 2. give each of the baddies a class of "baddy"
-
+  for (baddy of baddies){
+   const $li = $('<li>').text(baddy)
+    $li.addClass('baddy')
+    $ul.append($li)
+  }
   // 3. remember to append the ul to Mordor
-
+  $('#Mordor').append($ul)
 };
 
 // COMMIT YOUR WORK
