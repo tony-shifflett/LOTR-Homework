@@ -276,9 +276,12 @@ const weWantsIt = () => {
   $('#Mordor').append($div)
 
   // 2. Move the ring from Frodo and give it to Gollum
-  $
+  $myPrecious = $("div#the-ring").detach()
+  $($div).append($myPrecious)
   // 3. Move Gollum into Mount Doom
-
+  $div.detach()
+  $('#Mordor').append($div)
+  
 };
 
 // COMMIT YOUR WORK
