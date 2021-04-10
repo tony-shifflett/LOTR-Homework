@@ -42,27 +42,21 @@ const makeMiddleEarth = () => {
   // console.log("Trying to make middle earth.");
 
   // 1. create a section tag with an id of middle-earth
-  const $section = $('<section>')
+  const $section = $('<section>').attr('id', "middle-earth")
   
   // 2. append the section to the body of the DOM.
   $('body').append($section)
   // 3. use a for loop to iterate over the lands array that does the following:
-
-  //   3a. creates an article tag (there should be one for each land when the loop is done)
-
-  //   3b. gives each land article an `id` tag of the corresponding land name
-
-  //   3c. includes an h1 with the name of the land inside each land article
-
-  //   3d. appends each land to the middle-earth section
   for(land of lands){
+  //   3a. creates an article tag (there should be one for each land when the loop is done)
     const $article = $('<article>')
+  //   3b. gives each land article an `id` tag of the corresponding land name
     $article.attr('id',`${land}`)
-    const $h1 = $('<h1>').text(land)
-    $article.append($h1)
-    $('section').append($article)
-    }
-
+  //   3c. includes an h1 with the name of the land inside each land article
+  //   3d. appends each land to the middle-earth section
+    $article.html(`<h1>${land}</h1>`)
+  $('#middle-earth').append($article)
+  }
 };
 
 // COMMIT YOUR WORK
@@ -78,11 +72,12 @@ const makeHobbits = () => {
   // 1. create a 'ul'
   const $ul = $('<ul>')
   // 2. make each hobbit an li element and append it to the 'ul' you just created
-    // hint: use the given 'hobbits' array and use a for loop
+  // hint: use the given 'hobbits' array and use a for loop
   for (hobbit of hobbits) {
     const $li = $('<li>').text(hobbit)
     $li.addClass('hobbit')
     $ul.append($li)
+
   }
   // 3. also, give each hobbit (`li`) a class of "hobbit"
 
@@ -122,7 +117,7 @@ const makeBaddies = () => {
   $ul = $('<ul>')
   // 2. give each of the baddies a class of "baddy"
   for (baddy of baddies){
-   const $li = $('<li>').text(baddy)
+    const $li = $('<li>').text(baddy)
     $li.addClass('baddy')
     $ul.append($li)
   }
@@ -137,10 +132,9 @@ const makeBaddies = () => {
 // Chapter 5
 // ============
 const makeBuddies = () => {
-
   // 1. create an aside tag and append it to middle-earth below mordor
   $aside = $('<aside>')
-  $('section').append($aside)
+  $('#Mordor').append($aside)
   // 2. display an unordered list of buddies in the aside
   $ul = $('<ul>')
   for (buddy of buddies){
@@ -164,8 +158,7 @@ const makeBuddies = () => {
 const leaveTheShire = () => {
   // 1. grab the hobbits (the ul in which they reside) and move them to Rivendell
       // hint: the hobbits ul is a childNode of The-Shire-- there is way to get a list of childNodes
-  const $hobbitsMoving = $('#The-Shire ul').remove()
-  $('#Rivendell').append($hobbitsMoving)
+  $('#Rivendell').append($('#The-Shire ul'))
 };
 
 // COMMIT YOUR WORK
@@ -178,9 +171,7 @@ const beautifulStranger = () => {
 
   // 1. change the buddy 'Strider' textnode to "Aragorn"
      // hint: You can get a list of elements by tag name, such as 'aside'
-     $viggo = $('.buddy:nth-of-type(4)')
-     $viggo.text('Aragorn')
-
+     $('.buddy:contains("Strider")').text('Aragorn')
 };
 
 // COMMIT YOUR WORK
@@ -194,15 +185,12 @@ const forgeTheFellowShip = () => {
   // 1. create a new div with an id 'the-fellowship'
   $div = $('<div>').attr('id', "the-fellowship")
   // 2. add an h1 with the text 'The Fellowship' to this new div
-  $h1 =$('<h1>').text('The Fellowship')
-  $div.append($h1)
+  $div.html("<h1>The Fellowship</h1>")
   // 3. append the fellowship to middle-earth
   $('section').append($div)
   // 4. add the unordered lists of hobbits and buddies to 'the-fellowship'
-  const $hobbitsJoining = $('#Rivendell ul').remove()
-  const $buddiesJoining = $('aside ul').remove()
-  $div.append($hobbitsJoining)
-  $div.append($buddiesJoining)
+  $div.append($('#Rivendell ul'))
+  $div.append($('aside ul'))
 };
 
 // COMMIT YOUR WORK
@@ -219,7 +207,6 @@ const theBalrog = () => {
   // 2. add a class "the-white" to this element
   $('li:contains("Gandalf")').addClass('the-white')
   // 3. in the style.css file, add a css rule to make elements of the class "the-white" have a white background and a grey border
-
 };
 
 // COMMIT YOUR WORK
@@ -231,7 +218,7 @@ const theBalrog = () => {
 const hornOfGondor = () => {
 
   // 1. create a pop-up alert that the horn of gondor has been blown
-  // alert("THE HORN OF GONDOR HAS BEEN BLOWN!")
+  alert("THE HORN OF GONDOR HAS BEEN BLOWN!")
 
   // 2. Boromir's been killed by the Uruk-hai! Put a linethrough on Boromir's name
   $('li:contains("Boromir")').css('text-decoration', "line-through")
@@ -250,17 +237,12 @@ const hornOfGondor = () => {
 const itsDangerousToGoAlone = () => {
 
   // 1. take Frodo and Sam out of the fellowship and move them to Mordor (they don't need to be inside a ul in Mordor)
-  const $Frodo = $("li:contains('Frodo')").detach()
-  const $Sam = $("li:contains('Samwise')").detach()
-  $('#Mordor').append($Frodo)
-  $('#Mordor').append($Sam)
-
+  $('#Mordor').append($("li:contains('Frodo')"))
+  $('#Mordor').append($("li:contains('Samwise')"))
+ 
   // 2. add a div with an id of 'mount-doom' to Mordor
   $div = $('<div>').attr('id', 'mount-doom')
-  //display + prepend part of experiment to stop mordor from moving off map
-  $div.css('display', 'none')
-  $('#Mordor').prepend($div)
-
+  $('#Mordor').append($div)
 };
 
 // COMMIT YOUR WORK
@@ -276,10 +258,8 @@ const weWantsIt = () => {
   $('#Mordor').append($div)
 
   // 2. Move the ring from Frodo and give it to Gollum
-  $myPrecious = $("div#the-ring").detach()
-  $($div).append($myPrecious)
+  $($div).append($("div#the-ring"))
   // 3. Move Gollum into Mount Doom
-  $div.detach()
   $('#Mordor').append($div)
   
 };
@@ -299,9 +279,7 @@ const thereAndBackAgain = () => {
   $('.baddy').remove()
 
   // 3. Move all the hobbits back to the shire
-
-   $theseGDHobbits = $(".hobbit").detach()
-   $('#The-Shire').append($($theseGDHobbits))
+   $('#The-Shire').append($(".hobbit"))
  
 };
 
