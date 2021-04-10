@@ -103,7 +103,7 @@ const keepItSecretKeepItSafe = () => {
   $div = $('<div>').attr('id', 'the-ring')
   // 2. add the ring as a child of Frodo
     // hint: Frodo does not have an id, but there is a command to retrieve all elements with a certain class. This should give you an array for you to access . . .
-  const $frodo = $('ul li:first')
+  const $frodo = $('ul li:contains("Frodo")')
   $frodo.append($div)
   
     // when you think you have given Frodo the ring, check in your Elements tab to see that it works correctly
@@ -192,7 +192,7 @@ const beautifulStranger = () => {
 const forgeTheFellowShip = () => {
 
   // 1. create a new div with an id 'the-fellowship'
-  $div = $('<div>').attr('id', "the-fellowhip")
+  $div = $('<div>').attr('id', "the-fellowship")
   // 2. add an h1 with the text 'The Fellowship' to this new div
   $h1 =$('<h1>').text('The Fellowship')
   $div.append($h1)
@@ -231,7 +231,7 @@ const theBalrog = () => {
 const hornOfGondor = () => {
 
   // 1. create a pop-up alert that the horn of gondor has been blown
-  alert("THE HORN OF GONDOR HAS BEEN BLOWN!")
+  // alert("THE HORN OF GONDOR HAS BEEN BLOWN!")
 
   // 2. Boromir's been killed by the Uruk-hai! Put a linethrough on Boromir's name
   $('li:contains("Boromir")').css('text-decoration', "line-through")
@@ -293,11 +293,16 @@ const weWantsIt = () => {
 const thereAndBackAgain = () => {
 
   // 1. remove Gollum and the Ring from the DOM
+  $('#gollum').remove()
 
   // 2. remove all the baddies from the DOM
+  $('.baddy').remove()
 
   // 3. Move all the hobbits back to the shire
 
+   $theseGDHobbits = $(".hobbit").detach()
+   $('#The-Shire').append($($theseGDHobbits))
+ 
 };
 
 // COMMIT YOUR WORK
